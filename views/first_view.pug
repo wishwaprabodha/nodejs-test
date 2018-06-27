@@ -1,32 +1,36 @@
 doctype html
 html
-    head
-      title Form Tester
-    body
-      form(method='POST' action='/register')
-        input#id(type='text',name='fid' placeholder="Id")
-        br
-        br 
-        input#name(type='text',name='fname' placeholder="Name")
-        br
-        br
-        input#age(type='text',name='fage' placeholder="Age")
-        br
-        br
-        input#address(type='text' name='faddress' placeholder="Address")
-        br
-        br
-        button.btn.btn-primary(type='submit') Sign up
-
-      br
+  include ./head
+  body
+    .container.pt-5
+      form(method="POST" action="/customer")
+        .form-group
+          label(for='id') Id
+          input#id.form-control(type='text' name="id")
+        .form-group
+          label(for='name') Name
+          input#name.form-control(type='text' name="name")
+        .form-group
+          label(for='age') Age
+          input#age.form-control(type='text' name="age")
+        .form-group
+          label(for='address') Address
+          input#address.form-control(type='text' name="address")
+        button.btn.btn-primary(type='submit') Submit
       br
 
-      table
-        tr
-          foreach (person in customer)
+
+      table.table
+        thead
+          tr
+            th(scope='col') Id
+            th(scope='col') Name
+            th(scope='col') Age
+            th(scope='col') Address
+        tbody
+          each person in data
             tr
-              td =person.fid
-              td =person.fname
-              td =person.fage
-              td =person.faddress
-
+              td= person.id
+              td= person.name
+              td= person.age
+              td= person.address
